@@ -14,7 +14,7 @@ export default function Item({id,title,price,img, onaddtocart,ishome,quantity,on
           <img class="card-img-top setimg"  src={img} />
             <p class="card-text">{title}</p>
             <p class="card-text">{price}/-</p>
-            <input type='number' value={val} onChange={setvalchange}></input>
+            <input type='number' className='inpnum' value={val} onChange={setvalchange}></input>
             <button className='btn-primary add' onClick={()=>{
                 onaddtocart(val);
                 setval(0);
