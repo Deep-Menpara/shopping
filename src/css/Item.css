@@ -1,0 +1,29 @@
+.add {
+  border-radius: 15px;
+  padding: 0px 10px;
+  float: right;
+
+  box-shadow: 1px 1px 3px #000;
+  margin: 0px 0px 15px 0px;
+}
+
+.setimg {
+  height: 300px;
+}
+
+.cuscard {
+  background: rgb(255, 255, 255);
+  font-size: 20px;
+  font-weight: 500;
+  border: 1px solid rgb(231, 228, 235);
+  box-shadow: 0px 3px 0px #2000d4, 2px 5px 8px rgb(59, 59, 59);
+}
+.icon {
+  font-size: 30px;
+  vertical-align: middle;
+}
+
+.inpnum {
+  width: 20%;
+  text-align: center;
+}

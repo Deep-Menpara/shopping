@@ -38,12 +38,31 @@
     transform: rotate(360deg);
   }
 }
-
-.btn {
-  display: inline-block;
-  line-height: 1.4em;
+.cart {
+  right: 0;
+  top: 50px;
+}
+.home {
+  top: 0;
+}
+.cartitems {
+  font-size: 20px;
+  position: absolute;
+  top: -15px;
+  left: -10px;
+  min-width: 30px;
+  color: #000000;
+  background: #c3c3c3;
+  border-radius: 80%;
+}
+.carticon {
+  margin-top: 10px;
+}
+.btnn {
   font-size: 25px;
+
   border: 0px;
+  position: absolute;
   float: right;
   margin: 10px;
   padding: 0 0.62em;
@@ -51,10 +70,14 @@
   background: #000;
   border-radius: 7px;
   color: #ffffff;
-  box-shadow: 0px 3px 0px #00bcd4, 2px 5px 8px #000;
+  box-shadow: 2px 5px 8px #000;
 }
-.inpnum {
-  width: 60%;
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
 }
 .spann {
   font-size: 25px;
@@ -65,26 +88,6 @@
   border-radius: 7px;
   color: #ffffff;
   box-shadow: 2px 5px 8px #000;
-}
-
-.add {
-  border-radius: 15px;
-  padding: 0px 10px;
-  float: right;
-  box-shadow: 1px 1px 3px #000;
-  margin: 0px 0px 15px 0px;
-}
-
-.setimg {
-  height: 300px;
-}
-
-.cuscard {
-  background: rgb(255, 255, 255);
-  font-size: 20px;
-  font-weight: 500;
-  border: 1px solid rgb(231, 228, 235);
-  box-shadow: 0px 3px 0px #2000d4, 2px 5px 8px rgb(59, 59, 59);
 }
 
 #wrap {

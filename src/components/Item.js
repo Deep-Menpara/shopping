@@ -1,11 +1,17 @@
 import React,{useState} from 'react';
-
-export default function Item({id,title,price,img, onaddtocart,ishome,quantity,ondeltocart}) {
+import '../css/Item.css';
+export default function Item({title,price,img, onAddToCart,ishome,quantity,onDelFromCart}) {
   
-  const [val,setval]=useState();
+  const [val,setVal]=useState(0);
   
-  const setvalchange=(event)=>{
-    setval(event.target.value);
+  const setValChange=(event)=>{
+    setVal(parseInt(event.target.value));
+  };
+  const decrementQuantity=()=>{
+    setVal((val-1));
+  };
+  const incrementQuantity=()=>{
+    setVal((val+1));
   };
   
   if (ishome==1) {
@@ -14,11 +20,14 @@ export default function Item({id,title,price,img, onaddtocart,ishome,quantity,on
           <img class="card-img-top setimg"  src={img} />
             <p class="card-text">{title}</p>
             <p class="card-text">{price}/-</p>
-            <input type='number' className='inpnum' value={val} onChange={setvalchange}></input>
+            <span class="material-icons icon" onClick={decrementQuantity}>remove_circle_outline</span>
+            <input type='number' className='inpnum' value={val} onChange={setValChange}></input>
+            <span class="material-icons icon" onClick={incrementQuantity}>add_circle_outline</span>
             <button className='btn-primary add' onClick={()=>{
-                onaddtocart(val);
-                setval(0);
+                onAddToCart(val);
+                setVal(0);
             }}>Add</button>  
+            
           </div>
         </div>;
   }
@@ -31,8 +40,10 @@ export default function Item({id,title,price,img, onaddtocart,ishome,quantity,on
               <p class="card-text">{price}/-</p>
               <p class="card-text">{quantity}</p>
               <button className='btn-primary add' onClick={()=>{
-                  ondeltocart();
-              }}>Delete</button>  
+                  onDelFromCart();
+              }}><span class="material-icons">
+              delete_outline
+              </span></button>  
             </div>
           </div>;
   }

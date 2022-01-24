@@ -5,37 +5,36 @@ import { Products } from './components/Products';
 import Item from './components/Item';
 function App() {
   
-  const [cartarr,setcartarr]=useState([]);
-  const [ishome,setText]=useState("true");
+  const [cartarr,setCartArr]=useState([]);
+  const [ishome,setIsHome]=useState(true);
   const [searchitem,setSearch]=useState("");
-  const [productarr,setproductarr]=useState(Products);
+  const [productarr,setProductArr]=useState(Products);
   
-  const setsearchchange=(event)=>{
-    console.log("dd");
+  const setSearchChange=(event)=>{
     setSearch(event.target.value);
   };
   
-  const loadcart=()=>{
-    setText("false");
+  const loadCart=()=>{
+    setIsHome(false);
   };
   
-  const loadhome=()=>{
-    setText("true");
+  const loadHome=()=>{
+    setIsHome(true);
   };
   
-  const deletetocart=(id)=>{
-      setcartarr((oldarr)=>{
+  const deleteFromCart=(id)=>{
+      setCartArr((oldarr)=>{
       return oldarr.filter((item,index)=>{
           return item.id !== id;
       });
   });
   };
 
-  const addtocart=(id,title,price,val,img)=>{
+  const addToCart=(id,title,price,val,img)=>{
     if(parseInt(val)>0)
     {
-      let found=0;
-      setcartarr((oldarr)=>{
+      let found=false;
+      setCartArr((oldarr)=>{
         return oldarr.map((item)=>{
             if(item.id==id)
             {
@@ -45,9 +44,9 @@ function App() {
             return item;
         });
     });
-    if(found==0)
+    if(!found)
     {
-        setcartarr((oldarr)=>{
+        setCartArr((oldarr)=>{
             const obj={id:id,title:title,price:price,img:img,quantity:val}
             return [...oldarr,obj]
         });
@@ -55,14 +54,18 @@ function App() {
     }
   };
 
-  if(ishome=="true")
+  if(ishome)
   {
     return (
       <>
-        <input className='inp' id="search" name="search" type="text" onChange={setsearchchange} placeholder="What're we looking for ?"/><input className='inp' id="search_submit" type="submit"/>
+         <button className='btnn cart' onClick={loadCart}  ><span class="material-icons carticon">
+shopping_cart 
+</span><span className='cartitems'>{cartarr.reduce((total)=>{
+              return total=total+1;
+            },0)}</span></button>
+<input className='inp' id="search" name="search" type="text" onChange={setSearchChange} placeholder="What're we looking for ?"/><input className='inp' id="search_submit" type="submit"/>
         <div class="container cuscon" >
-          <div className='card'> <button className='btn' onClick={loadcart}  >Goto-> Cart</button>
-          </div>
+
           <div class="card-columns">
             {
               productarr.filter((item)=>{
@@ -73,7 +76,7 @@ function App() {
                 return item;
               }
             }).map((item)=>{
-                return <Item key={item.id} {...item} ishome={1} onaddtocart={(val)=>{addtocart(item.id,item.title,item.price,val,item.img);}}></Item>;})
+                return <Item key={item.id} {...item} ishome={1} onAddToCart={(val)=>{addToCart(item.id,item.title,item.price,val,item.img);}}></Item>;})
             }
           </div>
         </div>
@@ -84,17 +87,18 @@ function App() {
   {
     return (
       <>
+      <button  className='btnn home'   onClick={loadHome}><span class="material-icons">
+house
+</span>  </button>
         <div class="container cuscon">
-        <div className='card'>
-        <button  className='btn'   onClick={loadhome}>Home  </button>
-        </div>
+
         <div class="card-columns">
         {
           cartarr.map((item)=>
           {
-            return <Item key={item.id} ishome={0} {...item} ondeltocart={
+            return <Item key={item.id} ishome={0} {...item} onDelFromCart={
               ()=>{
-                deletetocart(item.id);
+                deleteFromCart(item.id);
               }
             }></Item>;
           })
@@ -106,7 +110,10 @@ function App() {
         <br></br>
         <center><span className='spann'>Cart Total: {cartarr.reduce((total,item)=>{
               return total+(parseInt(item.quantity)*parseInt(item.price));
-            },0)}/-</span>
+            },0)}/- <br></br> </span>
+            <span className='spann'>Items: {cartarr.reduce((total)=>{
+              return total=total+1;
+            },0)}</span>
         </center>
       </>
     );
