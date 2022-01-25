@@ -1,0 +1,32 @@
+.cart {
+  right: 0;
+  z-index: 5;
+  top: 50px;
+}
+.cartitems {
+  font-size: 20px;
+  position: absolute;
+  top: -15px;
+  left: -10px;
+  min-width: 30px;
+  color: #000000;
+  background: #c3c3c3;
+  border-radius: 80%;
+}
+.carticon {
+  margin-top: 10px;
+}
+.btnn {
+  font-size: 25px;
+
+  border: 0px;
+  position: absolute;
+  float: right;
+  margin: 10px;
+  padding: 0 0.62em;
+  font-weight: bold;
+  background: #000;
+  border-radius: 7px;
+  color: #ffffff;
+  box-shadow: 2px 5px 8px #000;
+}

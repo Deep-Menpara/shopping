@@ -1,0 +1,10 @@
+.spann {
+  font-size: 25px;
+
+  padding: 0 0.62em;
+  font-weight: bold;
+  background: #000;
+  border-radius: 7px;
+  color: #ffffff;
+  box-shadow: 2px 5px 8px #000;
+}
