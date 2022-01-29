@@ -1,7 +1,6 @@
 import './App.css';
 import React,{useState,useEffect} from 'react';
 import Cart from './components/Cart';
-import { Route, Switch } from 'react-router-dom';
 import Home from './components/Home';
 import HomeBtn from './components/HomeBtn';
 import CartBtn from './components/CartBtn';
